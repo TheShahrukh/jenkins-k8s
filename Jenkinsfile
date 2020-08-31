@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    registry = "localhost:5000/node-test-app_jenkins"
+    registry = "localhost:32000/webapp"
     dockerImage = ""
     Deploy = "true"
   }
@@ -34,7 +34,8 @@ pipeline {
       }
       steps {
         script {
-          sh 'sudo kubectl create -f webapp.yaml'
+          sh 'sudo microk8s kubectl create -f webapp-deployment.yaml'
+          sh 'sudo microk8s kubectl create -f webapp-service.yaml'
           sh 'sudo kubectl get all'
         }
       }
