@@ -3,7 +3,7 @@ pipeline {
   environment {
     registry = "localhost:5000/webapp"
     dockerImage = ""
-    Deploy = "true"
+    Deploy = "false"
   }
   stages {
     stage('Poll SCM') {
